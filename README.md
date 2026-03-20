@@ -16,14 +16,14 @@ Denne repoen inneholder en liten Node.js-app som:
 - gjør branding via navn, tagline, logo og farger
 - eksponerer et JSON-endepunkt som også kan brukes i Power BI
 
-## Hvorfor dette oppsettet er nyttig for deg
+## Hvorfor dette oppsettet
 
-Du sa ja til alle fire neste steg fra forrige runde, så løsningen er nå utvidet med:
+løsningen er utvidet med:
 
-1. **Mer presise API-spor** – både device search path og installed apps path er eksplisitt konfigurerbare.
-2. **Branding** – du kan sette firmanavn, tagline, logo og accent-farger fra miljøvariabler.
-3. **App-oversikter i stedet for ikke-compliant-liste** – dashboardet viser nå egne tabeller for Bliksund EWA og Locus Mobile.
-4. **Power BI-startpunkt** – det ligger en Power Query-fil i `powerbi/` som kan lese samme datamodell fra `GET /api/dashboard`.
+1. **Mer presise API-spor** – både device search path og installed apps path er konfigurerbare
+2. **Branding** – man kan sette firmanavn, tagline, logo og accent-farger fra .env
+3. **App-oversikter** – dashboardet viser nå egne filtrerbare tabeller for Bliksund EWA og Locus Mobile
+4. **Power BI-startpunkt** – det ligger en Power Query-fil i `powerbi/` som kan lese samme datamodell fra `GET /api/dashboard`
 
 ## Krav
 
@@ -33,12 +33,12 @@ Du sa ja til alle fire neste steg fra forrige runde, så løsningen er nå utvid
 - REST API Key / tenant code fra Workspace ONE UEM
 - Et Workspace ONE-endepunkt som kan returnere installerte apper per enhet
 
-## Konfigurasjon
+## Konfig
 
-Kopier `.env.example` til `.env` og fyll inn verdiene:
+kopier og fyll inn egne verdier i `.env` 
 
 ```bash
-cp .env.example .env
+cp .env
 ```
 
 ### Viktigste variabler
@@ -53,7 +53,7 @@ WS1_API_KEY=your-rest-api-key
 WS1_OG_CONFIG=[{"id":"123","label":"HQ","query":"organizationgroupid=123"},{"id":"456","label":"Branch","query":"organizationgroupid=456"}]
 WS1_DEVICE_SEARCH_PATH=/api/mdm/devices/search
 WS1_INSTALLED_APPS_PATH_TEMPLATE=/api/mdm/devices/{deviceUuid}/apps/search
-WS1_TARGET_APPS=["Bliksund EWA","Locus Mobile"]
+WS1_TARGET_APPS=["***","***"]
 WS1_APP_INVENTORY_CONCURRENCY=5
 ```
 
@@ -100,16 +100,16 @@ WS1_INSTALLED_APPS_PATH_TEMPLATE=/api/mdm/devices/{deviceUuid}/apps/search
 Du kan sette disse variablene:
 
 ```env
-DASHBOARD_CUSTOMER_NAME=Bliksund
-DASHBOARD_BRAND_NAME=Field Operations Center
+DASHBOARD_CUSTOMER_NAME=***
+DASHBOARD_BRAND_NAME=***
 DASHBOARD_BRAND_TAGLINE=Workspace ONE UEM oversikt for enheter, appdistribusjon og aktivitet.
-DASHBOARD_LOGO_PATH=/brand-mark.svg
+DASHBOARD_LOGO_PATH=***
 DASHBOARD_ACCENT=#65d4ff
 DASHBOARD_ACCENT_2=#7c89ff
 DASHBOARD_PANEL_TINT=rgba(9, 23, 40, 0.86)
 ```
 
-Hvis du vil bruke egen logo, kan du erstatte `public/brand-mark.svg` eller peke `DASHBOARD_LOGO_PATH` til en annen fil under `public/`.
+Hvis du vil bruke en anna logo, kan du peke `DASHBOARD_LOGO_PATH` til en annen fil under `public/`.
 
 ## Starte appen
 
