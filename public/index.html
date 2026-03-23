@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="nb">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workspace ONE UEM Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero">
+        <div class="brand-block">
+          <img id="brand-logo" class="brand-logo" src="/brand-mark.svg" alt="Dashboard logo" />
+          <div>
+            <p class="eyebrow" id="customer-name">Din organisasjon</p>
+            <h1 id="brand-name">Operations Center</h1>
+            <p class="subtitle" id="brand-tagline">Workspace ONE UEM storskjerm for flåtestatus, appdistribusjon og siste aktivitet.</p>
+          </div>
+        </div>
+        <div class="hero-meta">
+          <div class="pill" id="updated-at">Laster…</div>
+          <div class="pill accent" id="refresh-info">Auto refresh</div>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="panel kpi-panel">
+          <div class="section-title-row">
+            <div>
+              <h2>Hovedtall</h2>
+              <p class="section-copy">Sanntidsstatus for alle valgte Organisation Groups.</p>
+            </div>
+            <button id="refresh-button" class="ghost-button">Oppdater nå</button>
+          </div>
+          <div class="kpi-grid" id="kpi-grid"></div>
+        </section>
+
+        <section class="panel span-6">
+          <h2>Organisation Group sammenligning</h2>
+          <div id="comparison-grid" class="comparison-grid"></div>
+        </section>
+
+        <section class="panel span-3">
+          <h2>Plattformfordeling</h2>
+          <div id="platform-chart" class="bar-list"></div>
+        </section>
+
+        <section class="panel span-3">
+          <h2>Compliance</h2>
+          <div id="compliance-chart" class="bar-list"></div>
+        </section>
+
+        <section class="panel wide">
+          <h2>Sist sett siste 7 dager</h2>
+          <div id="timeline" class="timeline"></div>
+        </section>
+
+        <section class="panel span-4">
+          <h2>Eierskap</h2>
+          <div id="ownership-chart" class="bar-list"></div>
+        </section>
+
+        <section class="panel span-8">
+          <h2>Datamodell / API-sporbarhet</h2>
+          <div id="api-model" class="api-model"></div>
+        </section>
+
+        <section class="panel wide">
+          <div class="section-title-row">
+            <div>
+              <h2>App-oversikt: Bliksund EWA og Locus Mobile</h2>
+              <p class="section-copy">Viser alle enheter i valgte Organisation Groups som har de sporede applikasjonene installert.</p>
+            </div>
+          </div>
+          <div id="tracked-apps" class="tracked-apps-grid"></div>
+          <div id="tracked-warnings" class="warning-stack"></div>
+        </section>
+      </main>
+    </div>
+
+    <template id="kpi-card-template">
+      <article class="kpi-card">
+        <span class="kpi-label"></span>
+        <strong class="kpi-value"></strong>
+        <span class="kpi-footnote"></span>
+      </article>
+    </template>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
